@@ -1,0 +1,19 @@
+{
+  "waypoints": {
+    "1": {
+      "name": "one",
+      "x": 0,
+      "y": 0,
+      "z": 0,
+      "biome": "PLAINS"
+    },
+    "2": {
+      "name": "",
+      "x": 10,
+      "y": 20,
+      "z": 30,
+      "biome": "JUNGLE"
+    }
+  },
+  "lastWaypointId": 2
+}

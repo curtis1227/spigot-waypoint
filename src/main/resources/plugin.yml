@@ -1,0 +1,9 @@
+name: Waypoint
+version: '1.0-SNAPSHOT'
+main: me.licurtis.waypoint.Waypoint
+api-version: '1.21'
+authors: [ courteous_ly ]
+commands:
+  wp:
+    description: testing
+    usage: /<command>
