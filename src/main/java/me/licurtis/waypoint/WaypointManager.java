@@ -6,7 +6,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
 
 import java.io.*;
-import java.nio.file.Path;
 import java.util.*;
 
 public final class WaypointManager {
@@ -95,7 +94,8 @@ public final class WaypointManager {
         }
 
         try (FileWriter fileWriter = new FileWriter(this.getPlayerFile(playerId))) {
-            new Gson().toJson(playerJson, fileWriter);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            gson.toJson(playerJson, fileWriter);
         } catch (Exception e) {
             System.out.println("[Waypoint] Could not write to file for player " + playerId);
         }
@@ -107,12 +107,21 @@ public final class WaypointManager {
             throw new Exception("[Waypoint] Could not get Waypoint plugin.");
         }
 
-        File file = new File(plugin.getDataFolder(), Path.of(this.worldId, playerId + ".json").toString());
-        if (!file.exists()) {
-            file.createNewFile();
+        if (!plugin.getDataFolder().exists()) {
+            plugin.getDataFolder().mkdir();
         }
 
-        return file;
+        File worldFolder = new File(plugin.getDataFolder(), this.worldId);
+        if (!worldFolder.exists()) {
+            worldFolder.mkdir();
+        }
+
+        File playerFile = new File(worldFolder, playerId + ".json");
+        if (!playerFile.exists()) {
+            playerFile.createNewFile();
+        }
+
+        return playerFile;
     }
 
     private static HashMap<String, JsonObject> loadPlayerJsons(String worldId) throws Exception {

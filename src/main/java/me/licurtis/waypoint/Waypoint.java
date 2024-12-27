@@ -23,13 +23,13 @@ public final class Waypoint extends JavaPlugin {
 
         switch (args[0]) {
             case "save":
-                this.waypointManager.saveWaypoint("test_player_uuid", args[1], Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]);
+                this.waypointManager.saveWaypoint(args[1], args[2], Integer.parseInt(args[3]), Integer.parseInt(args[4]), Integer.parseInt(args[5]), args[6]);
                 break;
             case "delete":
-                this.waypointManager.deleteWaypoint("test_player_uuid", args[1]);
+                this.waypointManager.deleteWaypoint(args[1], args[2]);
                 break;
             case "get":
-                System.out.println(this.waypointManager.getWaypoints("test_player_uuid"));
+                System.out.println(this.waypointManager.getWaypoints(args[1]));
                 break;
             default:
                 System.out.println("Nothing to see here.");
