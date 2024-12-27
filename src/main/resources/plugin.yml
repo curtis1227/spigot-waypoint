@@ -4,6 +4,6 @@ main: me.licurtis.waypoint.Waypoint
 api-version: '1.21'
 authors: [ courteous_ly ]
 commands:
-  wp:
-    description: testing
-    usage: /<command>
+  waypoint:
+    description: Save waypoints!
+    usage: /<command> [get|save|delete]
