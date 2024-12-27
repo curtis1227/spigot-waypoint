@@ -11,7 +11,7 @@ public final class Waypoint extends JavaPlugin {
     @Override
     public void onEnable() {
         try {
-            this.waypointManager = new WaypointManager(getServer().getWorlds().get(0).getUID().toString());
+            this.waypointManager = new WaypointManager(getServer().getWorlds().getFirst().getUID().toString());
         } catch (Exception e) {
             System.out.println("[Waypoint] Problem starting Waypoint plugin: " + e);
         }
@@ -23,25 +23,13 @@ public final class Waypoint extends JavaPlugin {
 
         switch (args[0]) {
             case "save":
-                this.waypointManager.saveWaypoint(
-                        "test_player_uuid",
-                        args[1],
-                        Integer.parseInt(args[2]),
-                        Integer.parseInt(args[3]),
-                        Integer.parseInt(args[4]),
-                        args[5]
-                );
+                this.waypointManager.saveWaypoint("test_player_uuid", args[1], Integer.parseInt(args[2]), Integer.parseInt(args[3]), Integer.parseInt(args[4]), args[5]);
                 break;
             case "delete":
-                this.waypointManager.deleteWaypoint(
-                        "test_player_uuid",
-                        args[1]
-                );
+                this.waypointManager.deleteWaypoint("test_player_uuid", args[1]);
                 break;
             case "get":
-                this.waypointManager.getWaypoints(
-                        "test_player_uuid"
-                );
+                System.out.println(this.waypointManager.getWaypoints("test_player_uuid"));
                 break;
             default:
                 System.out.println("Nothing to see here.");
